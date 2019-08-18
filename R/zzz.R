@@ -1,5 +1,5 @@
 .onAttach <- function(libname, pkgname) {
-  packageStartupMessage("seurathelper contains scripts for working with the Seurat package.")
+  packageStartupMessage("seurathelpeR contains scripts for working with the Seurat package.")
 }
 
 .onLoad <- function(libname, pkgname) {
