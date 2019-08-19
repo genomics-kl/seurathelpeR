@@ -1,5 +1,5 @@
 .onAttach <- function(libname, pkgname) {
-  packageStartupMessage("seurathelpeR contains scripts for working with the Seurat package.")
+  packageStartupMessage("seurathelpeR contains convenience scripts for working with the Seurat v3 package.")
 }
 
 .onLoad <- function(libname, pkgname) {
@@ -9,7 +9,7 @@
     devtools.install.args = "",
     devtools.name = "Kin Lau",
     devtools.desc.author = "Kin Lau <kin.lau@vai.org> [aut, cre]",
-    devtools.desc.license = "What license is it under?",
+    devtools.desc.license = "GPL-3",
     devtools.desc.suggests = NULL,
     devtools.desc = list()
   )
