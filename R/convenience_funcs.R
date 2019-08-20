@@ -1,7 +1,3 @@
-#' @importFrom magrittr %>%
-#' @export
-magrittr::`%>%`
-
 #' Count cells in Seurat object.
 #'
 #' \code{count_cells} returns a tibble with counts.
@@ -56,9 +52,10 @@ count_cells <- function(seurat_object, group_by_var, subgroup_var){
 
 #' Add a title to a ggplot object using cowplot.
 #'
-#' \code{add_title_ggplot} adds a title to a ggplot object using cowplot. This
-#' is useful when the ggplot object aleady has a title (e.g. gene ID) or if it
-#' is a faceted plot (e.g. UMAP split by 'orig.ident').
+#' \code{add_title_ggplot} adds a title to a ggplot object using cowplot.
+#'
+#' This is useful when the ggplot object aleady has a title (e.g. gene ID) or if
+#' it is a faceted plot (e.g. UMAP split by 'orig.ident').
 #'
 #' @param ggplot_obj A ggplot object.
 #' @param plot_title A character value for the plot title.

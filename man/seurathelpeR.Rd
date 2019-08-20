@@ -11,5 +11,7 @@ Simple convenience functions for working with Seurat objects.
 \section{seurathelpeR functions}{
 
 count_cells
+add_title_ggplot
+table_summary_seurat
 }
 

@@ -4,7 +4,12 @@
 #'
 #' @section seurathelpeR functions:
 #' count_cells
+#' add_title_ggplot
+#' table_summary_seurat
 #'
 #' @docType package
 #' @name seurathelpeR
+NULL
+
+#' @importFrom magrittr %>%
 NULL

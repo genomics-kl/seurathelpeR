@@ -20,3 +20,5 @@ Imports:
     magrittr (>= 1.5),
     stringr (>= 1.4)
 RoxygenNote: 6.1.1
+Suggests: 
+    testthat

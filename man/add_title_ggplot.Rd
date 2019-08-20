@@ -12,9 +12,11 @@ add_title_ggplot(ggplot_obj, plot_title)
 \item{plot_title}{A character value for the plot title.}
 }
 \description{
-\code{add_title_ggplot} adds a title to a ggplot object using cowplot. This
-is useful when the ggplot object aleady has a title (e.g. gene ID) or if it
-is a faceted plot (e.g. UMAP split by 'orig.ident').
+\code{add_title_ggplot} adds a title to a ggplot object using cowplot.
+}
+\details{
+This is useful when the ggplot object aleady has a title (e.g. gene ID) or if
+it is a faceted plot (e.g. UMAP split by 'orig.ident').
 }
 \examples{
 # load example dataset from Seurat
