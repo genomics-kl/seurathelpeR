@@ -85,6 +85,8 @@ add_title_ggplot <- function(ggplot_obj, plot_title){
 #'   columns (e.g. output from Seurat::FetchData).
 #' @param re_group A character value for the regex to group by.
 #'
+#' @return A list of named tibbles, one for each metric.
+#'
 #' @examples
 #' # load example dataset from Seurat
 #' data("pbmc_small", package="Seurat")

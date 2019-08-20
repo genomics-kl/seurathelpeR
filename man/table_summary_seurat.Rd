@@ -13,6 +13,9 @@ columns (e.g. output from Seurat::FetchData).}
 
 \item{re_group}{A character value for the regex to group by.}
 }
+\value{
+A list of named tibbles, one for each metric.
+}
 \description{
 \code{table_summary_seurat} returns a list of tibbles with summary metrics of
 the metrics fetched from a Seurat object using Seurat::FetchData.
