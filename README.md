@@ -28,6 +28,8 @@ library(seurathelpeR)
 #> seurathelpeR contains convenience scripts for working with the Seurat v3 package.
 ```
 
+### Count cells
+
 Count the number of cells classified by two grouping variables and
 calculate
 percentages.
@@ -58,6 +60,8 @@ count_cells(seurat_obj = pbmc_small, group_by_var = "groups")
 #> 2 g2        36   45
 ```
 
+### Add title to Seurat plots
+
 Seurat provides functions for many useful plots. Sometimes it is useful
 to add a ‘title’ to those plots to convey extra information.
 
@@ -75,6 +79,8 @@ add_title_ggplot(ggplot_obj = Seurat::DimPlot(subset(pbmc_small, subset = groups
 ```
 
 <img src="man/figures/README-add_title-2.png" width="100%" />
+
+### Metrics table
 
 It may be useful to obtain exact numbers for the standard filtering
 metrics as shown in the Seurat

@@ -93,7 +93,7 @@ add_title_ggplot <- function(ggplot_obj, plot_title){
 #' @export
 table_summary_seurat <- function(fetch_dat_out, re_group){
   seurat_metrics <- colnames(fetch_dat_out)
-  out_dfs <- vector("list", length = length(seurat_metrics))
+  out_dfs <- list()
 
   for (seurat_met in seurat_metrics) {
     out_df <- fetch_dat_out %>%

@@ -35,6 +35,8 @@ Below are some examples of how to use the functions in seurathelpeR.
 library(seurathelpeR)
 ```
 
+### Count cells
+
 Count the number of cells classified by two grouping variables and calculate percentages.
 
 ```{r count_cells}
@@ -47,6 +49,8 @@ Count the number of cells classified by just one grouping variable and calculate
 count_cells(seurat_obj = pbmc_small, group_by_var = "groups")
 ```
 
+### Add title to Seurat plots
+
 Seurat provides functions for many useful plots. Sometimes it is useful to add a 'title' to those plots to convey extra information.
 
 ```{r add_title}
@@ -56,6 +60,8 @@ add_title_ggplot(ggplot_obj = Seurat::DimPlot(pbmc_small, group.by = "RNA_snn_re
 # indicate how cells have been subsetted
 add_title_ggplot(ggplot_obj = Seurat::DimPlot(subset(pbmc_small, subset = groups == "g1"), group.by = "RNA_snn_res.0.8"), plot_title = "Group g1")
 ```
+
+### Metrics table
 
 It may be useful to obtain exact numbers for the standard filtering metrics as shown in the Seurat vignettes.
 
