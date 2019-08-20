@@ -1,0 +1,64 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# seurathelpeR
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of seurathelpeR is to provide convenience functions for working with Seurat v3 objects.
+
+## Installation
+
+You can install seurathelpeR from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("genomics-kl/seurathelpeR")
+```
+## Usage
+
+Below are some examples of how to use the functions in seurathelpeR.
+
+```{r load_lib}
+library(seurathelpeR)
+```
+
+Count the number of cells classified by two grouping variables and calculate percentages.
+
+```{r count_cells}
+count_cells(seurat_obj = pbmc_small, group_by_var = "groups", subgroup_var = "RNA_snn_res.0.8")
+```
+
+Count the number of cells classified by just one grouping variable and calculate percentages.
+
+```{r count_cells_1group}
+count_cells(seurat_obj = pbmc_small, group_by_var = "groups")
+```
+
+Seurat provides functions for many useful plots. Sometimes it is useful to add a 'title' to those plots to convey extra information.
+
+```{r add_title}
+# total number of cells in the title
+add_title_ggplot(ggplot_obj = Seurat::DimPlot(pbmc_small, group.by = "RNA_snn_res.0.8", split.by = "groups"), plot_title = paste0("n=",(Seurat::Idents(pbmc_small) %>% length())))
+
+# indicate how cells have been subsetted
+add_title_ggplot(ggplot_obj = Seurat::DimPlot(subset(pbmc_small, subset = groups == "g1"), group.by = "RNA_snn_res.0.8"), plot_title = "Group g1")
+```
+
+It may be useful to obtain exact numbers for the standard filtering metrics as shown in the Seurat vignettes.
+
+```{r metrics_table}
+table_summary_seurat(Seurat::FetchData(pbmc_small, vars = c("nFeature_RNA", "nCount_RNA")), "^\\S+(?=_[ACGT]+$)")
+```
