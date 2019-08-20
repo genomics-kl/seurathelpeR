@@ -6,7 +6,7 @@
 \alias{seurathelpeR-package}
 \title{seurathelpeR: A package with convenience functions for working with Seurat v3 objects.}
 \description{
-Simple convenience functions for working wit Seurat objects.
+Simple convenience functions for working with Seurat objects.
 }
 \section{seurathelpeR functions}{
 
