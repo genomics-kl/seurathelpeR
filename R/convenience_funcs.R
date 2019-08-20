@@ -28,6 +28,7 @@ magrittr::`%>%`
 #' \dontrun{
 #' count_cells(pbmc_small)
 #' }
+#' @export
 count_cells <- function(seurat_object, group_by_var, subgroup_var){
   seurat_object_df_perc <- 0 # placeholder
 
@@ -67,6 +68,7 @@ count_cells <- function(seurat_object, group_by_var, subgroup_var){
 #' data("pbmc_small", package="Seurat")
 #'
 #' add_title_ggplot(Seurat::DimPlot(pbmc_small, group.by = "RNA_snn_res.0.8", split.by = "groups"), paste0("n=",(Seurat::Idents(pbmc_small) %>% length())))
+#' @export
 add_title_ggplot <- function(ggplot_obj, plot_title){
   featplot_title <- cowplot::ggdraw() +
     cowplot::draw_label(plot_title, fontface = "bold", size = 20)
@@ -91,6 +93,7 @@ add_title_ggplot <- function(ggplot_obj, plot_title){
 #' data("pbmc_small", package="Seurat")
 #'
 #' table_summary_seurat(Seurat::FetchData(pbmc_small, vars = c("nFeature_RNA", "nCount_RNA")), "^\\S+(?=_[ACGT]+$)")
+#' @export
 table_summary_seurat <- function(fetch_dat_out, re_group){
   seurat_metrics <- colnames(fetch_dat_out)
   out_dfs <- vector("list", length = length(seurat_metrics))
