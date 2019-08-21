@@ -1,4 +1,11 @@
 
+  - [seurathelpeR](#seurathelper)
+      - [Installation](#installation)
+      - [Usage](#usage)
+          - [Count cells](#count-cells)
+          - [Add title to Seurat plots](#add-title-to-seurat-plots)
+          - [Metrics table](#metrics-table)
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # seurathelpeR
@@ -31,8 +38,7 @@ library(seurathelpeR)
 ### Count cells
 
 Count the number of cells classified by two grouping variables and
-calculate
-percentages.
+calculate percentages.
 
 ``` r
 count_cells(seurat_obj = pbmc_small, group_by_var = "groups", subgroup_var = "RNA_snn_res.0.8")
@@ -87,8 +93,7 @@ metrics as shown in the Seurat vignettes. The regex parameter can be
 used to parse out the cell name prefix that indicates the library; if a
 valid regex is provided, metrics will be calculated separately for each
 library. In this example, the data has no prefix so all the cells are
-calculated
-together.
+calculated together.
 
 ``` r
 seurat_fetch_dat <- Seurat::FetchData(pbmc_small, vars = c("nFeature_RNA", "nCount_RNA"))
