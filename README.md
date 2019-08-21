@@ -1,11 +1,4 @@
 
-  - [seurathelpeR](#seurathelper)
-      - [Installation](#installation)
-      - [Usage](#usage)
-          - [Count cells](#count-cells)
-          - [Add title to Seurat plots](#add-title-to-seurat-plots)
-          - [Metrics table](#metrics-table)
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # seurathelpeR
