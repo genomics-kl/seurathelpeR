@@ -22,5 +22,6 @@ it is a faceted plot (e.g. UMAP split by 'orig.ident').
 # load example dataset from Seurat
 data("pbmc_small", package="Seurat")
 
-add_title_ggplot(Seurat::DimPlot(pbmc_small, group.by = "RNA_snn_res.0.8", split.by = "groups"), paste0("n=",(Seurat::Idents(pbmc_small) \%>\% length())))
+add_title_ggplot(Seurat::DimPlot(pbmc_small, group.by = "RNA_snn_res.0.8", split.by = "groups"),
+paste0("n=",(length(Seurat::Idents(pbmc_small)))))
 }

@@ -2,7 +2,7 @@
 #'
 #' \code{count_cells} returns a tibble with counts.
 #'
-#' @param seurat_obj Seurat object.
+#' @param seurat_object Seurat object.
 #' @param group_by_var A character value for grouping the cells. Must correspond
 #'   to a column in Seurat@@meta.data.
 #' @param subgroup_var Optional parameter. A character value for sub-groups
@@ -35,7 +35,7 @@ count_cells <- function(seurat_object, group_by_var, subgroup_var){
       dplyr::group_by(!!as.symbol(group_by_var)) %>%
       dplyr::count() %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(perc = (n / sum(n) ) * 100)
+      dplyr::mutate(perc = (.data$n / sum(.data$n) ) * 100)
   } else {
     seurat_object_df <- seurat_object@meta.data[, c(group_by_var, subgroup_var)]
 
@@ -43,7 +43,7 @@ count_cells <- function(seurat_object, group_by_var, subgroup_var){
       dplyr::group_by(!!as.symbol(group_by_var), !!as.symbol(subgroup_var)) %>%
       dplyr::count() %>%
       dplyr::group_by(!!as.symbol(group_by_var)) %>%
-      dplyr::mutate(perc = (n / sum(n) ) * 100) %>%
+      dplyr::mutate(perc = (.data$n / sum(.data$n) ) * 100) %>%
       dplyr::ungroup()
   }
 
@@ -64,7 +64,8 @@ count_cells <- function(seurat_object, group_by_var, subgroup_var){
 #' # load example dataset from Seurat
 #' data("pbmc_small", package="Seurat")
 #'
-#' add_title_ggplot(Seurat::DimPlot(pbmc_small, group.by = "RNA_snn_res.0.8", split.by = "groups"), paste0("n=",(Seurat::Idents(pbmc_small) %>% length())))
+#' add_title_ggplot(Seurat::DimPlot(pbmc_small, group.by = "RNA_snn_res.0.8", split.by = "groups"),
+#' paste0("n=",(length(Seurat::Idents(pbmc_small)))))
 #' @export
 add_title_ggplot <- function(ggplot_obj, plot_title){
   featplot_title <- cowplot::ggdraw() +
@@ -91,7 +92,8 @@ add_title_ggplot <- function(ggplot_obj, plot_title){
 #' # load example dataset from Seurat
 #' data("pbmc_small", package="Seurat")
 #'
-#' table_summary_seurat(Seurat::FetchData(pbmc_small, vars = c("nFeature_RNA", "nCount_RNA")), "^\\S+(?=_[ACGT]+$)")
+#' table_summary_seurat(Seurat::FetchData(pbmc_small, vars = c("nFeature_RNA", "nCount_RNA")),
+#' "^\\S+(?=_[ACGT]+$)")
 #' @export
 table_summary_seurat <- function(fetch_dat_out, re_group){
   seurat_metrics <- colnames(fetch_dat_out)
@@ -100,13 +102,13 @@ table_summary_seurat <- function(fetch_dat_out, re_group){
   for (seurat_met in seurat_metrics) {
     out_df <- fetch_dat_out %>%
       tibble::rownames_to_column(var = "cell") %>%
-      dplyr::mutate(lib = stringr::str_extract(cell, re_group)) %>%
-      dplyr::group_by(lib) %>%
-      dplyr::summarise(perc25 = quantile(!!as.name(seurat_met), 0.25),
-                       median = median(!!as.name(seurat_met)),
-                       perc75 = quantile(!!as.name(seurat_met), 0.75),
-                       perc90 = quantile(!!as.name(seurat_met), 0.90),
-                       perc95 = quantile(!!as.name(seurat_met), 0.95))
+      dplyr::mutate(lib = stringr::str_extract(.data$cell, re_group)) %>%
+      dplyr::group_by(.data$lib) %>%
+      dplyr::summarise(perc25 = stats::quantile(!!as.name(seurat_met), 0.25),
+                       median = stats::median(!!as.name(seurat_met)),
+                       perc75 = stats::quantile(!!as.name(seurat_met), 0.75),
+                       perc90 = stats::quantile(!!as.name(seurat_met), 0.90),
+                       perc95 = stats::quantile(!!as.name(seurat_met), 0.95))
     out_dfs[[seurat_met]] <- out_df
   }
 

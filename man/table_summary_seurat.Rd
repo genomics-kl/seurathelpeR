@@ -24,5 +24,6 @@ the metrics fetched from a Seurat object using Seurat::FetchData.
 # load example dataset from Seurat
 data("pbmc_small", package="Seurat")
 
-table_summary_seurat(Seurat::FetchData(pbmc_small, vars = c("nFeature_RNA", "nCount_RNA")), "^\\\\S+(?=_[ACGT]+$)")
+table_summary_seurat(Seurat::FetchData(pbmc_small, vars = c("nFeature_RNA", "nCount_RNA")),
+"^\\\\S+(?=_[ACGT]+$)")
 }

@@ -7,13 +7,13 @@
 count_cells(seurat_object, group_by_var, subgroup_var)
 }
 \arguments{
+\item{seurat_object}{Seurat object.}
+
 \item{group_by_var}{A character value for grouping the cells. Must correspond
 to a column in Seurat@meta.data.}
 
 \item{subgroup_var}{Optional parameter. A character value for sub-groups
 within each group. Must correspond to a column in Seurat@meta.data.}
-
-\item{seurat_obj}{Seurat object.}
 }
 \value{
 Tibble with cell counts and percentages. If subgroup_var is provided,
