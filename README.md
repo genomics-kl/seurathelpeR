@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/genomics-kl/seurathelpeR.svg?branch=master)](https://travis-ci.org/genomics-kl/seurathelpeR)
 <!-- badges: end -->
 
 The goal of seurathelpeR is to provide convenience functions for working
