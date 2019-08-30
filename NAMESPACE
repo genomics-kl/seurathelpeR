@@ -2,6 +2,7 @@
 
 export(add_title_ggplot)
 export(count_cells)
+export(merge_sce_coldata)
 export(table_summary_seurat)
 importFrom(magrittr,"%>%")
 importFrom(rlang,.data)

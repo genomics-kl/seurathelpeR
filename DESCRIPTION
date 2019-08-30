@@ -21,7 +21,9 @@ Imports:
     stringr (>= 1.4),
     tibble (>= 2.1),
     stats (>= 3.6),
-    rlang (>= 0.4)
+    rlang (>= 0.4),
+    SingleCellExperiment (>= 1.7),
+    SummarizedExperiment (>= 1.14)
 RoxygenNote: 6.1.1
 Suggests: 
     testthat

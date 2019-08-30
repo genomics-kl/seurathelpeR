@@ -114,3 +114,53 @@ table_summary_seurat <- function(fetch_dat_out, re_group){
 
   return(out_dfs)
 }
+
+#' Function for merging the ColData of two SCE objects, matching by cell names.
+#'
+#' \code{merge_sce_coldata} returns the original SCE object with additional
+#' ColData merged from another SCE object with overlapping cells. If there are
+#' columns with the same name, the columns from the cmp_SCE will be suffixed
+#' with "_cmp".
+#'
+#' This function is useful for example when analyzing the same dataset with
+#' Seurat and the DropletUtils/scater/scran pipeline and then needing to
+#' visualize column data from the two analyses on the same embedding. It seems
+#' easier to convert Seurat to SCE than from SCE to Seurat.
+#'
+#' @param orig_sce SCE object that is to be retained.
+#' @param cmp_sce SCE object with overlapping cells (cells must have the same
+#'   names) and additional ColData to incorporate.
+#'
+#' @return The original SCE object with additional ColData from the second SCE
+#'   object.
+#'
+#' @examples
+#' # load example dataset from Seurat
+#' data("pbmc_small", package="Seurat")
+#'
+#' pbmc_small_sce <- Seurat::as.SingleCellExperiment(pbmc_small)
+#' pbmc_small_sce2 <- pbmc_small_sce
+#'
+#' # remove some cells from pbmc_small_sce
+#' pbmc_small_sce <- pbmc_small_sce[, c(-78:-80)]
+#'
+#' # remove different cells from pbmc_small_sce2
+#' pbmc_small_sce2 <- pbmc_small_sce2[, c(-7,-77)]
+#'
+#' # add a fake ColData column to pbmc_small_sce2
+#' pbmc_small_sce2$fake_col <- sample(x=7, size=ncol(pbmc_small_sce2), replace=TRUE)
+#'
+#' merge_sce_coldata(pbmc_small_sce, pbmc_small_sce2)
+#'
+#' @export
+merge_sce_coldata <- function(orig_sce, cmp_sce){
+  colnames(SummarizedExperiment::colData(cmp_sce)) <- ifelse(colnames(SummarizedExperiment::colData(cmp_sce)) %in% colnames(SummarizedExperiment::colData(orig_sce)),
+                                       paste0(colnames(SummarizedExperiment::colData(cmp_sce)), "_cmp"), colnames(SummarizedExperiment::colData(cmp_sce)))
+  SummarizedExperiment::colData(orig_sce) <- cbind(SummarizedExperiment::colData(orig_sce),
+                             SummarizedExperiment::colData(cmp_sce)[match(rownames(SummarizedExperiment::colData(orig_sce)),
+                                                    rownames(SummarizedExperiment::colData(cmp_sce))), ])
+
+  return(orig_sce)
+}
+
+
