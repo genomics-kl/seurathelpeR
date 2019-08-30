@@ -23,7 +23,7 @@ Imports:
     stats (>= 3.6),
     rlang (>= 0.4),
     SingleCellExperiment (>= 1.7),
-    SummarizedExperiment (>= 1.14)
+    SummarizedExperiment (>= 1.12)
 RoxygenNote: 6.1.1
 Suggests: 
     testthat
